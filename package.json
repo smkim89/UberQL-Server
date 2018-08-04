@@ -1,0 +1,14 @@
+{
+  "name": "UberQL-Servcer",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/smkim89/UberQL-Server.git",
+  "author": "smkim89 <kiak357@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "nodemon": "^1.18.3",
+    "ts-node": "^7.0.0",
+    "tslint-config-prettier": "^1.14.0",
+    "typescript": "^3.0.1"
+  }
+}
