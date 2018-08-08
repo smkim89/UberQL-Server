@@ -1,9 +1,9 @@
 type Query {
-  sayBye: Greeting!
+  sayBye(name: String!): sayByeResponse!
   sayHello: String!
 }
 
-type Greeting {
+type sayByeResponse {
   error: Boolean!
   text: String!
 }
