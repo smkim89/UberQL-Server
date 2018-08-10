@@ -1,7 +1,12 @@
+import dotenv from "dotenv";
+dotenv.config();
+
 import { Options } from "graphql-yoga";
 import { createConnection } from "typeorm";
 import app from "./app";
 import connectionOptions from "./ormConfig";
+
+//console.log(process.env); process.evn는 환경설정을 가져옴.
 
 const PORT: number | string = process.env.PORT || 4000;
 const PLAYGROUND_ENDPOINT: string = "/playground";

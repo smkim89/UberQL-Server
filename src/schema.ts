@@ -14,7 +14,7 @@ const mergedTypes = mergeTypes(allTypes);
 const mergedResolvers = mergeResolvers(allResolvers);
 
 
-//makeExecutableSchema : allTypes처럼 스키마들을 하나로 합쳐줌.
+//makeExecutableSchema : allTypes처럼 스키마들을 하나로 합쳐
 const schema = makeExecutableSchema({
     typeDefs: mergedTypes,
     resolvers: mergedResolvers
