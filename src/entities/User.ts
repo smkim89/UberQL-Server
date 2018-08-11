@@ -1,4 +1,4 @@
-import bcrypt, { hash } from "bcrypt";
+import bcrypt  from "bcrypt";
 import { IsEmail } from "class-validator";
 import {
   BaseEntity,
@@ -48,13 +48,19 @@ class User extends BaseEntity {
   @Column({ type: "float", default: 0 })
   lastOrientation: number;
   
-  //ascny를 사용했기때문에 Promise를 리턴해줌. type 이 promise고 리턴값이 없기에 void.
-
   get fullName(): string {
     return `${this.firstName} ${this.lastName}`;
   }
 
+  public comparePassword(password: string): Promise<boolean> {
+    return bcrypt.compare(password, this.password);
+  }
+
+
   @BeforeInsert()
+ 
+  //async 사용했기때문에 Promise를 리턴해줌. type 이 promise고 리턴값이 없기에 void.
+  //this.hashPassword 가 promise를 리턴하기때문에 async await을 사용함.
   @BeforeUpdate()
   async savePassword(): Promise<void> {
     if (this.password) {
@@ -62,6 +68,7 @@ class User extends BaseEntity {
       this.password = hashedPassword;
     }
   }
+  //bcrypt.hash 가 리턴하는데 시간이 걸림 someting.. then... then.. return Promise String으로 리턴한다.
    private hashPassword(password: string): Promise<string> {
     return bcrypt.hash(password, BCRYPT_ROUNDS);
   }
