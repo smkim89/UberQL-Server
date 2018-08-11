@@ -3,12 +3,16 @@ import {
     Column,
     CreateDateColumn,
     Entity,
+    ManyToOne,
     PrimaryGeneratedColumn,
     UpdateDateColumn
-  } from "typeorm";
-  import { rideStatus } from "../types/types";
-   @Entity()
-  class Ride extends BaseEntity {
+} from "typeorm";
+import { rideStatus } from "../types/types";
+
+import User from "./User";
+
+@Entity()
+class Ride extends BaseEntity {
     @PrimaryGeneratedColumn() id: number;
     @Column({
       type: "enum",
@@ -33,7 +37,11 @@ import {
     distance: string;
     @Column({ type: "varchar" })
     duration: string;
+    @ManyToOne(type => User, user => user.ridesAsPassenger)
+    passenger: User;
+    @ManyToOne(type => User, user => user.ridesAsDriver)
+    driver: User;
     @CreateDateColumn() createdAt: string;
     @UpdateDateColumn() updatedAt: string;
-  }
-  export default Ride;
+}
+export default Ride;
