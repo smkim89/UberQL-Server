@@ -22,16 +22,16 @@ import Verification from "./Verification";
 @Entity()
 class User extends BaseEntity {
   @PrimaryGeneratedColumn() id: number;
-  @Column({ type: "varchar", unique: true })
+  @Column({ type: "varchar",  nullable: true })
   @IsEmail()
-  email: string;
+  email: string|null;
   @Column({ type: "tinyint", default: 0 })
   verifiedEmail: boolean;
   @Column({ type: "varchar" })
   firstName: string;
   @Column({ type: "varchar" })
   lastName: string;
-  @Column({ type: "int" })
+  @Column({ type: "int" ,  nullable: true })
   age: number;
   @Column({ type: "varchar" })
   password: string;
@@ -53,6 +53,8 @@ class User extends BaseEntity {
   lastLat: number;
   @Column({ type: "float", default: 0 })
   lastOrientation: number;
+  @Column({ type: "varchar", nullable: true })
+  fbId: string;
   @ManyToOne(type => Chat, chat => chat.participants)
   chat: Chat;
    @OneToMany(type => Message, message => message.user)
