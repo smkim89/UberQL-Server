@@ -21,6 +21,9 @@ UBERQL-SERVER
 
 
 ### Private Resolvers:
+- Generate JWT
+- Verifiy JWT
+- Verify Email
 - Get my Profile
 - Update my Profile
 - Toggle Driving Mode

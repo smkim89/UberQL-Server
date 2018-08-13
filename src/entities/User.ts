@@ -33,9 +33,9 @@ class User extends BaseEntity {
   lastName: string;
   @Column({ type: "int" ,  nullable: true })
   age: number;
-  @Column({ type: "varchar" })
+  @Column({ type: "varchar" , nullable: true })
   password: string;
-  @Column({ type: "varchar" })
+  @Column({ type: "varchar" , nullable: true })
   phoneNumber: string;
   @Column({ type: "tinyint", default: 0 })
   verifiedPhonenNumber: boolean;
