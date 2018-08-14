@@ -24,7 +24,7 @@ import {
     address: string;
     
     @Column({ type: "tinyint", default: 0 })
-    isFav: boolean;
+    isFav: number;
 
     @CreateDateColumn() createdAt: string;
     

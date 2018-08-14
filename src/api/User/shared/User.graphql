@@ -1,18 +1,18 @@
 type User {
   id: Int!
   email: String
-  verifiedEmail: Boolean!
+  verifiedEmail: Int!
   firstName: String!
   lastName: String!
   age: Int
   password: String
   phoneNumber: String
-  verifiedPhonenNumber: Boolean!
+  verifiedPhoneNumber: Int!
   profilePhoto: String
   fullName: String
-  isDriving: Boolean!
-  isRiding: Boolean!
-  isTaken: Boolean!
+  isDriving: Int!
+  isRiding: Int!
+  isTaken: Int!
   lastLng: Float
   lastLat: Float
   lastOrientation: Float

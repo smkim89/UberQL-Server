@@ -20,6 +20,9 @@ class Verification extends BaseEntity {
     @Column({ type: "enum", enum: ["PHONE", "EMAIL"] })
     target: verificationTarget;
     
+    @Column({ type: "tinyint", default: 0 })
+    verified : number;
+
     @Column({ type: "varchar" })
     payload: string;
     

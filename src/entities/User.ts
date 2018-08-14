@@ -26,7 +26,7 @@ class User extends BaseEntity {
   email: string|null;
 
   @Column({ type: "tinyint", default: 0 })
-  verifiedEmail: boolean;
+  verifiedEmail: number;
   
   @Column({ type: "varchar" })
   firstName: string;
@@ -44,19 +44,19 @@ class User extends BaseEntity {
   phoneNumber: string;
   
   @Column({ type: "tinyint", default: 0 })
-  verifiedPhonenNumber: boolean;
+  verifiedPhoneNumber: number;
   
   @Column({ type: "varchar" })
   profilePhoto: string;
   
   @Column({ type: "tinyint", default: 0 })
-  isDriving: boolean;
+  isDriving: number;
   
   @Column({ type: "tinyint", default: 0 })
-  isRiding: boolean;
+  isRiding: number;
   
   @Column({ type: "tinyint", default: 0 })
-  isTaken: boolean;
+  isTaken: number;
   
   @Column({ type: "float", default: 0 })
   lastLng: number;
