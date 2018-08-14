@@ -7,7 +7,7 @@ const headers = {
 
 // 요청 세부 내용
 const options = {
-  url: process.env.SMS_URL,
+  url: process.env.SMS_URL || "",
   method: 'GET',
   headers: headers,
   qs: {'job_id': '1', 'mtel_no': '', 'msg' : '', 'rtel_no' : '16440088'}
