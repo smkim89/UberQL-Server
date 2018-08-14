@@ -1,4 +1,5 @@
 import request from 'request';
+
 const headers = {
   'User-Agent':       'Super Agent/0.0.1',
   'Content-Type':     'application/x-www-form-urlencoded'
@@ -13,7 +14,6 @@ const options = {
 }
 
 export const sendSms = (to: string, msg : string) => {
- 
   options.qs.mtel_no = to;
   options.qs.msg = msg;
   request(options, function (error, response, body) {
@@ -25,4 +25,4 @@ export const sendSms = (to: string, msg : string) => {
 
 
 export const sendVerificationSMS = (to: string, key: string) =>
-  sendSms(to, `Your verification key is: ${key}`);
+  sendSms(to, `Your verification is: ${key}`);
