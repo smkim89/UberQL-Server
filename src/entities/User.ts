@@ -17,7 +17,6 @@ const BCRYPT_ROUNDS = 10;
 import Chat from "./Chat";
 import Message from "./Message";
 import Ride from "./Ride";
-import Verification from "./Verification";
 
 @Entity()
 class User extends BaseEntity {
@@ -25,39 +24,56 @@ class User extends BaseEntity {
   @Column({ type: "varchar",  nullable: true })
   @IsEmail()
   email: string|null;
+
   @Column({ type: "tinyint", default: 0 })
   verifiedEmail: boolean;
+  
   @Column({ type: "varchar" })
   firstName: string;
+  
   @Column({ type: "varchar" })
   lastName: string;
+  
   @Column({ type: "int" ,  nullable: true })
   age: number;
+  
   @Column({ type: "varchar" , nullable: true })
   password: string;
+  
   @Column({ type: "varchar" , nullable: true })
   phoneNumber: string;
+  
   @Column({ type: "tinyint", default: 0 })
   verifiedPhonenNumber: boolean;
+  
   @Column({ type: "varchar" })
   profilePhoto: string;
+  
   @Column({ type: "tinyint", default: 0 })
   isDriving: boolean;
+  
   @Column({ type: "tinyint", default: 0 })
   isRiding: boolean;
+  
   @Column({ type: "tinyint", default: 0 })
   isTaken: boolean;
+  
   @Column({ type: "float", default: 0 })
   lastLng: number;
+  
   @Column({ type: "float", default: 0 })
   lastLat: number;
+  
   @Column({ type: "float", default: 0 })
   lastOrientation: number;
+  
   @Column({ type: "varchar", nullable: true })
   fbId: string;
+  
   @ManyToOne(type => Chat, chat => chat.participants)
   chat: Chat;
-   @OneToMany(type => Message, message => message.user)
+  
+  @OneToMany(type => Message, message => message.user)
   messages: Message[];
 
 
@@ -86,8 +102,6 @@ class User extends BaseEntity {
     return bcrypt.hash(password, BCRYPT_ROUNDS);
   }
 
-  @OneToMany(type => Verification, verification => verification.user)
-  verifications: Verification[];
   @OneToMany(type => Ride, ride => ride.passenger)
   ridesAsPassenger: Ride[];
   @OneToMany(type => Ride, ride => ride.driver)

@@ -3,7 +3,6 @@ import {
     Column,
     CreateDateColumn,
     Entity,
-    ManyToOne,
     PrimaryGeneratedColumn,
     UpdateDateColumn,
     BeforeInsert
@@ -13,7 +12,6 @@ import { verificationTarget } from "../types/types";
 
 const PHONE = "PHONE";
 const EMAIL = "EMAIL";
-import User from "./User";
 
 @Entity()
 class Verification extends BaseEntity {
@@ -27,12 +25,6 @@ class Verification extends BaseEntity {
     
     @Column({ type: "varchar" })
     key: string;
-    
-    @Column({ type: "tinyint", default: 0 })
-    used: boolean;
-    
-    @ManyToOne(type => User, user => user.verifications )
-    user: User;
 
     @CreateDateColumn() createdAt: string;
     
