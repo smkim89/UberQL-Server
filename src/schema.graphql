@@ -21,7 +21,7 @@ type Place {
   lat: Float!
   lng: Float!
   address: String!
-  isFav: Boolean!
+  isFav: Int!
   createdAt: String!
   updatedAt: String
 }
@@ -53,11 +53,18 @@ type ComplatePhoneVerificationResponse {
 type Mutation {
   CompletePhoneVerification(phoneNumber: String!, key: String!): ComplatePhoneVerificationResponse!
   EmailSignIn(email: String!, password: String!): EmailSignInResponse!
+  EmailSignUp(firstName: String!, lastName: String!, email: String!, password: String!, profilePhoto: String!, age: Int!, phoneNumber: String!): EmailSignUpResponse!
   FacebookConnect(firstName: String!, lastName: String!, email: String, fbId: String!): FacebookConnectResponse!
   StartPhoneVerification(phoneNumber: String!): StartPhoneVerificationResponse!
 }
 
 type EmailSignInResponse {
+  ok: Boolean!
+  error: String
+  token: String
+}
+
+type EmailSignUpResponse {
   ok: Boolean!
   error: String
   token: String
@@ -72,18 +79,18 @@ type FacebookConnectResponse {
 type User {
   id: Int!
   email: String
-  verifiedEmail: Boolean!
+  verifiedEmail: Int!
   firstName: String!
   lastName: String!
   age: Int
   password: String
   phoneNumber: String
-  verifiedPhoneNumber: Boolean!
+  verifiedPhoneNumber: Int!
   profilePhoto: String
   fullName: String
-  isDriving: Boolean!
-  isRiding: Boolean!
-  isTaken: Boolean!
+  isDriving: Int!
+  isRiding: Int!
+  isTaken: Int!
   lastLng: Float
   lastLat: Float
   lastOrientation: Float
