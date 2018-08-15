@@ -4,6 +4,7 @@ import helmet from "helmet";
 import logger  from "morgan";
 import schema from "./schema";
 import decodeJWT from "./utils/decodeJWT";
+import { NextFunction, Response } from "../node_modules/@types/express-serve-static-core";
 class App {
     public app : GraphQLServer;
     constructor(){
@@ -30,7 +31,7 @@ class App {
     }
 
     //헤더값에 값(토큰 값이) 있느지 체크하여 graphql-yoga가 실행되기전에 데이터를 읽어올 수 있다.
-    private jwt = async (req, res, next): Promise<void> => {
+    private jwt = async (req, res:Response, next:NextFunction): Promise<void> => {
         const token = req.get("X-JWT");
         if (token) {
           const user = await decodeJWT(token);
