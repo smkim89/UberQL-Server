@@ -17,6 +17,7 @@ const BCRYPT_ROUNDS = 10;
 import Chat from "./Chat";
 import Message from "./Message";
 import Ride from "./Ride";
+import Place from "./Place";
 
 @Entity()
 class User extends BaseEntity {
@@ -106,6 +107,8 @@ class User extends BaseEntity {
   ridesAsPassenger: Ride[];
   @OneToMany(type => Ride, ride => ride.driver)
   ridesAsDriver: Ride[];
+  @OneToMany(type => Place, place => place.user)
+  places : Place[];
 
   @CreateDateColumn() createdAt: string;
   

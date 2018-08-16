@@ -4,10 +4,12 @@ import {
     CreateDateColumn,
     Entity,
     PrimaryGeneratedColumn,
-    UpdateDateColumn
+    UpdateDateColumn,
+    ManyToOne
   } from "typeorm";
+import User from "./User";
    @Entity()
-  class Place extends BaseEntity {
+   class Place extends BaseEntity {
     
     @PrimaryGeneratedColumn() id: number;
     
@@ -24,7 +26,14 @@ import {
     address: string;
     
     @Column({ type: "tinyint", default: 0 })
-    isFav: number;
+    isFav: number; //즐겨찾기.
+
+    //typeORM에서는 관계형으로 되어있는 (user)와 같은 데이터의 id를 데이터화 가능함.
+    @Column({ nullable: true })
+    userId: number;
+
+    @ManyToOne(type => User, user => user.places)
+    user: User;
 
     @CreateDateColumn() createdAt: string;
     
