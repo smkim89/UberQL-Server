@@ -19,27 +19,33 @@ UBERQL-SERVER
 - Complete Phone Number Verification
 - Sign Up with Email
 
-
-### Private Resolvers:
+### Authentication:
 - Generate JWT
 - Verifiy JWT
-- Verify Email
+
+### Private Resolvers:
 - Get my Profile
+- Request Email Verification
+- Complete Email Verification
 - Update my Profile
 - Toggle Driving Mode
 - Report Location / Orientation
 - Add Place
 - Edit Place
 - Delete Place
+- Get My Places
 - See Nearby Drivers
 - Subscribe to Nearby Drivers
 - Request a Ride
 - Get Nearby Ride Requests
 - Subscribe to Nearby Ride Requests
+- Update Ride Status
+- Get Ride
 - Subscribe to Ride Status
+- Create a Chat Room
 - Get Chat Room Messages
-- Subscribe to Chat Room Messages
 - Send a Chat Message
+- Subscribe to Chat Room Messages
 
 
 ### Code Challenge
