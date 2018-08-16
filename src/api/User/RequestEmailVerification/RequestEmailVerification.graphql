@@ -1,0 +1,8 @@
+type Mutation {
+    RequestEmailVerification : RequestEmailVerificationResponse!
+}
+
+type RequestEmailVerificationResponse {
+    ok : Boolean!
+    error : String
+}

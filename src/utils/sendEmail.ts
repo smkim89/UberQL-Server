@@ -13,7 +13,7 @@ const sendEmail = (to: string, subject: string, html: string) => {
     };
     return mailGunClient.messages().send(emailData);
   };
-   export const sendVerificationEmail = (to : string, fullName: string, key: string) => {
+   export const sendVerificationEmail = (to : string, fullName: string|null, key: string) => {
     const emailSubject = `Hello! ${fullName}, please verify your email`;
     const emailBody = `Verify your email by clicking <a href="http://nuber.com/verification/${key}/">here</a>`;
     return sendEmail(to, emailSubject, emailBody);
