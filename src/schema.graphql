@@ -46,6 +46,17 @@ type EditPlaceResponse {
   error: String
 }
 
+type Query {
+  GetMyPlaces: GetMyPlacesResponse!
+  GetMyProfile: GetMyProfileResponse!
+}
+
+type GetMyPlacesResponse {
+  ok: Boolean!
+  error: String
+  places: [Place]
+}
+
 type Place {
   id: Int!
   name: String!
@@ -104,10 +115,6 @@ type FacebookConnectResponse {
   ok: Boolean!
   error: String
   token: String
-}
-
-type Query {
-  GetMyProfile: GetMyProfileResponse!
 }
 
 type GetMyProfileResponse {
