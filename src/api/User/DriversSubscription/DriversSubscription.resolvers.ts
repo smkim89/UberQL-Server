@@ -5,6 +5,7 @@ const resolvers = {
     Subscription: {
       DriversSubscription: {
         subscribe: (_, __, { pubSub }) => {
+            //driverUpdate 로 기다리고있음...
           return pubSub.asyncIterator("driverUpdate");
         }
       }
