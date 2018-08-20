@@ -24,6 +24,8 @@ const appOptions: Options = {
         const user = await decodeJWT(token);
         console.log(user);
         if (user) {
+          //subscriptions 의 resolvers의 context에 currentUser 전달. 
+          //websocket은 Header의 정보로 커넥션이 연결이 됌.
           return {
             currentUser: user
           };

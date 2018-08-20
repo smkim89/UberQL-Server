@@ -18,9 +18,14 @@ class App {
         //최신 자바스크립트에서는 객체의 key : value가 같은경우 하나만 입력해 줘도 된다. (schema)
         //미들 웨어가 먼저 시작됌.
         //resolvers에 context에 미들웨어에서 선행된 데이터들을 셋팅 해 줄수 있다.
+        //app.ts의 request는  full Request임 subscriptions도 피할 수 없음.
+        
         this.app = new GraphQLServer({
             schema,
             context: req => {
+                //req.connection.context.currentUser
+                //아래의 connection은 websocket의 connection임 Http와는 다른 커넥션.
+                //요청자의 currnetUser를 전달해주기위해 context에 데이터를 넣어줌.
                 const { connection: { context = null } = {} } = req;
                 return {
                   req: req.request,
