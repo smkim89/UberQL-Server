@@ -18,7 +18,9 @@ const resolvers = {
             const user: User = context.currentUser;
             console.log(payload.DriversSubscription.email);
             console.log(context);
-            //  query의 as처럼 이름을 바꾸는것임 변수선언.
+
+            
+            //  query의 const json as처럼 이름을 바꾸는것임 변수선언.
             const {
               DriversSubscription: {
                 lastLat: driverLastLat,
