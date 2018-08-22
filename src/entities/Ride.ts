@@ -16,7 +16,9 @@ class Ride extends BaseEntity {
     @PrimaryGeneratedColumn() id: number;
     @Column({
       type: "enum",
-      enum: ["ACCEPTED", "FINISHED", "CANCELED", "REQUESTING", "ONROUTE"]
+      enum: ["ACCEPTED", "FINISHED", "CANCELED", "REQUESTING", "ONROUTE"],
+      default : "ACCEPTED"
+
     })
     status: rideStatus;
     @Column({ type: "varchar" })
