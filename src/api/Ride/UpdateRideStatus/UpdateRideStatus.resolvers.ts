@@ -12,7 +12,7 @@ import Ride from "../../../entities/Ride";
       async (
         _,
         args: UpdateRideStatusMutationArgs,
-        { req }
+        { req, pubSub }
       ): Promise<UpdateRideStatusResponse> => {
         const user: User = req.user;
         if (user.isDriving == 1) {
@@ -37,6 +37,7 @@ import Ride from "../../../entities/Ride";
               if (ride) {
                 ride.status = args.status;
                 ride.save();
+                pubSub.publish("rideUpdate", { RideStatusSubscription: ride });
                 return {
                   ok: true,
                   error: null
