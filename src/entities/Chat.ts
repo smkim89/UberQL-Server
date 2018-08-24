@@ -1,7 +1,9 @@
 import {
     BaseEntity,
+    Column,
     CreateDateColumn,
     Entity,
+    ManyToOne,
     OneToMany,
     PrimaryGeneratedColumn,
     UpdateDateColumn
@@ -16,8 +18,19 @@ class Chat extends BaseEntity {
     //Chat는 여러개의 message를 가지고 있다. 관계형 (1:N)
     @OneToMany(type => Message, message => message.chat)
     messages: Message[];
-    @OneToMany(type => User, user => user.chat)
-    participants: User[];
+
+    @Column({ nullable: true })
+    passengerId: number;
+    
+    @ManyToOne(type => User, user => user.chatsAsPassenger)
+    passenger: User;
+    
+    @Column({ nullable: true })
+    driverId: number;
+    
+    @ManyToOne(type => User, user => user.chatsAsDriver)
+    driver: User;
+    
     @CreateDateColumn() createdAt: string;
     @UpdateDateColumn() updatedAt: string;
 }

@@ -15,6 +15,7 @@ const resolvers = {
           //pubSub.publish("driverUpdate", { DriversSubscription: user });
           //{ context } 는 주체자의 정보가 담겨있음 context.currentUser;
           (payload, _, { context }) => {
+            //(payload, _, { context }) _에 args가 온다. subscript에서 파라메터를 받을 경우 args로 받으면 됌
             const user: User = context.currentUser;
             console.log(payload.DriversSubscription.email);
             console.log(context);

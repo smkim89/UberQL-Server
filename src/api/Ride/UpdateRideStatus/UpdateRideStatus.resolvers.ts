@@ -1,11 +1,13 @@
+import Chat from "../../../entities/Chat";
 import User from "../../../entities/User";
+import Ride from "../../../entities/Ride";
 import {
   UpdateRideStatusMutationArgs,
   UpdateRideStatusResponse
 } from "../../../types/graph";
 import { Resolvers } from "../../../types/resolvers";
 import privateResolver from "../../../utils/privateResolver";
-import Ride from "../../../entities/Ride";
+
  const resolvers: Resolvers = {
   Mutation: {
     UpdateRideStatus: privateResolver(
@@ -19,14 +21,21 @@ import Ride from "../../../entities/Ride";
           try {
               let ride : Ride | undefined;
               if(args.status == "ACCEPTED"){
-                ride = await Ride.findOne({
-                  id: args.rideId,
-                  status: "REQUESTING"
-                });
+                ride = await Ride.findOne(
+                  {
+                    id: args.rideId,
+                    status: "REQUESTING"
+                  },
+                  { relations: ["passenger"] }
+                );
                 if(ride){
                   ride.status = "ACCEPTED";
                   ride.driver = user;
                   ride.save();
+                  await Chat.create({
+                    driver: user,
+                    passenger: ride.passenger
+                  }).save();
                 }
               }else{
                 ride = await Ride.findOne({
