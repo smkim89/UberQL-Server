@@ -16,6 +16,10 @@ class Message extends BaseEntity {
     @PrimaryGeneratedColumn() id: number;
     @Column({ type: "varchar" })
     text: string;
+
+    @Column({ nullable: true })
+    chatId: number;
+
     //Message는 chat의 메세지중 하나이다 관계형 (N:1)
     @ManyToOne(type => Chat, chat => chat.messages)
     chat: Chat;
