@@ -11,7 +11,8 @@ import privateResolver from "../../../utils/privateResolver";
         try {
           const chat = await Chat.findOne({
             id: args.chatId
-          });
+          },
+          { relations: ["messages", "passenger", "driver"] });
           if (chat) {
             if (chat.passengerId === user.id || chat.driverId === user.id) {
               return {
