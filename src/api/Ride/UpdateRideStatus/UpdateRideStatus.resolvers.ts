@@ -32,10 +32,12 @@ import privateResolver from "../../../utils/privateResolver";
                   ride.status = "ACCEPTED";
                   ride.driver = user;
                   ride.save();
-                  await Chat.create({
+                  const chat = await Chat.create({
                     driver: user,
                     passenger: ride.passenger
                   }).save();
+                  ride.chat = chat;
+                  ride.save();
                 }
               }else{
                 ride = await Ride.findOne({

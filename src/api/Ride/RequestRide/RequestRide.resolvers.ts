@@ -15,7 +15,7 @@ import privateResolver from "../../../utils/privateResolver";
         { req, pubSub }
       ): Promise<RequestRideResponse> => {
         const user: User = req.user;
-        if(user.isRiding == 1){
+          if(user.isRiding == 0 && user.isDriving ==0){
             try {
                 const ride = await Ride.create({ ...args, passenger: user }).save();
                 pubSub.publish("rideRequest", { NearbyRideSubscription: ride });
@@ -36,7 +36,7 @@ import privateResolver from "../../../utils/privateResolver";
         }else{
             return{
                 ok: false,
-                error: "you cant request 2 rides.",
+                error: "you cant request 2 rides or drive and request",
                 ride: null
             }
         }
