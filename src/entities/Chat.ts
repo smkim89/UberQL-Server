@@ -16,7 +16,7 @@ class Chat extends BaseEntity {
     @PrimaryGeneratedColumn() id: number;
 
     //Chat는 여러개의 message를 가지고 있다. 관계형 (1:N)
-    @OneToMany(type => Message, message => message.chat)
+    @OneToMany(type => Message, message => message.chat, { nullable: true })
     messages: Message[];
 
     @Column({ nullable: true })
